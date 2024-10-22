@@ -1,0 +1,7 @@
+.pub1{
+    border: none;
+    background-image: url('{{ asset('images/imag.png') }}');
+    background-size: contain;
+    height: 170px;
+    
+}
