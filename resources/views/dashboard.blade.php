@@ -13,6 +13,18 @@
                         <a class="nav-link" href="{{ route('etablissements.create') }}">Ajouter un établissement</a>
                     </li>
                     <li class="nav-item">
+                    <a class="nav-link" href="{{ route('ads.index') }}">Listes des pub(s)</a>
+                    <a class="nav-link" href="{{ route('ads.create') }}">Ajouter une pub</a>
+
+
+
+                        <select name="ad_management" id="ad-management-select" class="form-select">
+                            <option disabled selected>Gestion des Publicités</option>
+                            <option value="{{ route('ads.index') }}">Afficher les Publicités</option>
+                            <option value="{{ route('ads.create') }}">Créer une Publicité</option>
+                            <option value="{{ route('ads.edit', ['ad' => 1]) }}">Modifier la Publicité #1</option> <!-- Remplace 1 par l'ID de la publicité -->
+                            <option value="{{ route('ads.destroy', ['ad' => 1]) }}">Supprimer la Publicité #1</option> <!-- Remplace 1 par l'ID de la publicité -->
+                        </select>
                         <a class="nav-link" href="{{ route('profile') }}">
                             <i class="fas fa-user"></i> Profil
                         </a>

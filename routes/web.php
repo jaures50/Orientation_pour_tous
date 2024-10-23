@@ -105,4 +105,9 @@ Route::delete('/etablissements/{id}', [EtablissementController::class, 'destroy'
 // Route pour mettre à jour un établissement
 Route::put('/etablissements/{id}', [EtablissementController::class, 'update'])->name('etablissements.update');
 
-    Route::get('/tout', [EtablissementController::class, 'tous'])->name('etablissements.tout'); // Route pour afficher tous les établissements
+Route::get('/tout', [EtablissementController::class, 'tous'])->name('etablissements.tout'); // Route pour afficher tous les établissements
+
+
+use App\Http\Controllers\AdController;
+
+Route::resource('ads', AdController::class);

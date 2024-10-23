@@ -101,7 +101,7 @@
             text-decoration: underline;
         }
     </style>
-    
+
 </head>
 
 <body>
@@ -194,6 +194,31 @@
                 </div>
             </nav>
         </div>
+
+
+        <!-- Carrousel -->
+        <div id="carouselExampleAutoplaying" class="carousel slide " data-bs-ride="carousel">
+            <div class="carousel-inner">
+                @foreach ($ads as $index => $ad)
+                <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                    <a href="{{ $ad->link }}" target="_blank" >
+
+                        <div class="ad-1" style="background-image: url('{{ asset('storage/' . $ad->image) }}'); height: 400px;"></div>
+                    </a>
+
+                </div>
+                @endforeach
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
 
         <!-- Contenu principal -->
         <main>

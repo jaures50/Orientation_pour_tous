@@ -17,26 +17,7 @@
     <!-- Conteneur principal sans contour bleu -->
     <div style=" background-color: white;">
 
-        <div class="row">
-            <div class="col-md-6">
-                <!-- Publicité 1 -->
-                <a href="https://www.esdam.bj/">
-                    <div class="ad-1 mb-3 pub1" style="border:none; background-image: url('{{ asset('images/imag.png') }}'); background-size: contain; height:170px ">
-
-
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-6">
-                <!-- Publicité 2 -->
-                <a href="https://ecole229.bj/">
-                    <div class="ad-1 mb-3" style="border:none; background-image: url('{{ asset('images/image.png') }}'); background-size: contain; height:170px ">
-
-
-                    </div>  
-                </a>
-            </div>
-        </div>
+      
 
         <!-- Publicités à gauche -->
 

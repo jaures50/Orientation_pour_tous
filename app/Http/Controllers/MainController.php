@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Ad;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Auth\RegisteredUserController;
@@ -12,7 +13,8 @@ class MainController extends Controller
     // Afficher la page d'accueil
     public function index()
     {
-        return view('welcome');
+        $ads = Ad::all();
+        return view('welcome', compact('ads'));
     }
 
     // Afficher la vue de connexion
@@ -42,7 +44,8 @@ class MainController extends Controller
     // Afficher la page d'accueil après authentification
     public function home()
     {
-        return view('home');
+        $ads = Ad::all();
+        return view('home', compact('ads'));
     }
 
     // Afficher la page de profil
