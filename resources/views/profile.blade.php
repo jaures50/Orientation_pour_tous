@@ -12,10 +12,7 @@
 <!-- Formulaire de déconnexion -->
 <form method="POST" action="{{ route('logout') }}" class="mt-3">
     @csrf
-    <p>Sans problème</p>
-    hbfbd
-
-    <button type="submit" class="btn btn-danger">Déconnexion</button>
+    <button type="submit" class="btn btn-danger">Déconnexion </button>
 
 </form>
 @endsection
