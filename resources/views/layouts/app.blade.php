@@ -38,6 +38,7 @@
             font-size: 1rem;
             border: none;
             transition: background-color 0.3s;
+
         }
 
         .form-select:hover {
@@ -201,9 +202,9 @@
             <div class="carousel-inner">
                 @foreach ($ads as $index => $ad)
                 <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
-                    <a href="{{ $ad->link }}" target="_blank" >
+                    <a href="{{ $ad->link }}" target="_blank">
 
-                        <div class="ad-1" style="background-image: url('{{ asset('storage/' . $ad->image) }}'); height: 400px;"></div>
+                        <div class="ad-1" style="background-image: url('{{ asset('storage/' . $ad->image) }}'); height: 300px; background-repeat: no-repeat;  background-size: cover; background-position: center; position: relative; "></div>
                     </a>
 
                 </div>
