@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('title'); // Titre de l'annonce
             $table->string('image'); // URL ou chemin de l'image
             $table->string('link')->nullable(); // Lien de redirection, nullable
-            $table->boolean('active')->default(true); // Statut de l'annonce (active ou désactivée)
             $table->timestamps(); // Création des champs created_at et updated_at
         });
     }

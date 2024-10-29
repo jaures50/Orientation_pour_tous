@@ -17,9 +17,7 @@
     <label for="link">Lien (optionnel) :</label>
     <input class="form-control" type="url" name="link" value="{{ $ad->link }}"> <br> <br>
 
-    <label for="active">Activer :</label>
-    <input type="checkbox" name="active" id="active" {{ $ad->active ? 'checked' : '' }}> <!-- Checkbox pour activer/désactiver -->
-    <br> <br>
+   
 
     <button class="btn btn-primary" type="submit">Mettre à jour</button>
 </form>

@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
         /* Styles généraux */
@@ -38,7 +38,6 @@
             font-size: 1rem;
             border: none;
             transition: background-color 0.3s;
-
         }
 
         .form-select:hover {
@@ -62,7 +61,6 @@
             background-color: transparent;
             font-size: 22px;
             /* Taille des selects */
-            font-weight: 500;
             font-weight: bold;
         }
 
@@ -79,11 +77,9 @@
         .nav-item a {
             color: black;
             font-weight: bold;
-
         }
 
         /* Footer */
-
         footer {
             background-color: #f8f9fa;
             padding: 20px;
@@ -113,19 +109,16 @@
                 <div class="container">
                     <a class="navbar-brand" href="{{ route('home') }}">
                         <img src="{{ asset('images/logo.png') }}" height="100px" alt="Description de l'image">
-
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
 
                     <div class="collapse navbar-collapse" id="navbarNav">
-
                         <ul class="navbar-nav mx-auto">
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('home') }}">Accueil</a>
                             </li>
-
                             <li class="nav-item">
                                 <select name="navigation" id="nav-select" class="form-select nav-select1">
                                     <option disabled selected>Catégories d’orientation</option>
@@ -136,7 +129,6 @@
                                     <option value="{{ route('orientation.toutvie') }}">Orientation Tout au Long de la Vie</option>
                                 </select>
                             </li>
-
                             <li class="nav-item">
                                 <select name="navigation" id="nav-select" class="form-select nav-select2">
                                     <option disabled selected>Services</option>
@@ -147,7 +139,6 @@
                                     <option value="{{ route('offres.benindestination') }}">Bénin Destination Sup</option>
                                 </select>
                             </li>
-
                             <li class="nav-item">
                                 <select name="navigation" id="nav-select" class="form-select nav-select3">
                                     <option disabled selected>E-books et Cours</option>
@@ -155,13 +146,11 @@
                                     <option value="{{ route('formatheque.ebooks') }}">E-books Payants</option>
                                 </select>
                             </li>
-
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('contact') }}">Contact</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('dashboard') }}">Bord</a>
-
                             </li>
                         </ul>
 
@@ -190,25 +179,29 @@
                             </li>
                             @endif
                         </ul>
-
                     </div>
                 </div>
             </nav>
         </div>
 
         @if (Request::is('home'))
-        <!-- Carrousel dans le header -->
         <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner" style="height: 400px; background-color: #f1f1f1;">
+            <div class="carousel-inner">
+                @if ($ads->isEmpty())
+                <div class="carousel-item active">
+                    <div class="d-flex justify-content-center align-items-center" style="height: 400px;">
+                        <p style="color: red;">Aucune annonce disponible.</p>
+                    </div>
+                </div>
+                @else
                 @foreach ($ads as $index => $ad)
-                @if ($ad->active) <!-- Vérification si l'annonce est active -->
                 <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
                     <a href="{{ $ad->link }}" target="_blank">
-                        <div class="ad-1" style="background-image: url('{{ asset('storage/' . $ad->image) }}'); height: 300px; background-repeat: no-repeat; background-size: cover; background-position: center; position: relative;"></div>
+                        <div class="ad-1" style="background-image: url('{{ asset('storage/' . $ad->image) }}'); height: 400px; background-repeat: no-repeat; background-size: cover; background-position: center;"></div>
                     </a>
                 </div>
-                @endif
                 @endforeach
+                @endif
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -223,18 +216,13 @@
 
 
 
+
         <!-- Contenu principal -->
         <main>
             @yield('content')
         </main>
 
-
-
-
         <footer>
-
-
-
             <div class="container">
                 <div class="row">
                     <div class="col-md-3">
@@ -244,74 +232,57 @@
                             <li><a href="#">Catégories d’Orientation</a></li>
                             <li><a href="#">Orientation Scolaire</a></li>
                             <li><a href="#">Orientation Universitaire</a></li>
-                            <li><a href="#">Formation Post-Bac</a></li>
-                            <li><a href="#">Orientation Professionnelle</a></li>
-                            <li><a href="#">Orientation Tout au Long de la Vie</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-3">
-                        <h5>Ressources</h5>
-                        <ul class="list-unstyled">
-                            <li><a href="#">Test d’orientation</a></li>
-                            <li><a href="#">Contact Conseillers</a></li>
-                            <li><a href="#">Guide des Métiers</a></li>
-                            <li><a href="#">Universités & Écoles</a></li>
-                            <li><a href="#">Bénin Destination Sup</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-3">
-                        <h5>Formations et E-books</h5>
-                        <ul class="list-unstyled">
-                            <li><a href="#">Formations</a></li>
-                            <li><a href="#">E-books</a></li>
+                            <li><a href="#">Formation Professionnelle</a></li>
                         </ul>
                     </div>
                     <div class="col-md-3">
                         <h5>À Propos</h5>
                         <ul class="list-unstyled">
                             <li><a href="#">Qui sommes-nous ?</a></li>
-                            <li><a href="#">Notre Mission</a></li>
+                            <li><a href="#">Notre Équipe</a></li>
                             <li><a href="#">Contactez-nous</a></li>
-                            <li><a href="#">Mentions Légales</a></li>
-                            <li><a href="#">Politique de Confidentialité</a></li>
                         </ul>
                     </div>
+                    <div class="col-md-3">
+                        <h5>Réseaux Sociaux</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Facebook</a></li>
+                            <li><a href="#">Twitter</a></li>
+                            <li><a href="#">Instagram</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <h5>Newsletter</h5>
+                        <p>Inscrivez-vous à notre newsletter pour rester informé.</p>
+                        <form action="#" method="post">
+                            <div class="mb-3">
+                                <input type="email" class="form-control" placeholder="Votre e-mail" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">S'inscrire</button>
+                        </form>
+                    </div>
                 </div>
-                <div class="social-media">
-                    <h5>Suivez-nous</h5>
-                    <ul class="list-inline">
-                        <li class="list-inline-item"><a href="#">Facebook</a></li>
-                        <li class="list-inline-item"><a href="#">Twitter</a></li>
-                        <li class="list-inline-item"><a href="#">LinkedIn</a></li>
-                        <li class="list-inline-item"><a href="#">Instagram</a></li>
-                        <li class="list-inline-item"><a href="#">TikTok</a></li>
-                    </ul>
-                </div>
-                <div class="contact-info">
-                    <p>Email : <a href="mailto:contact@plateforme-orientations.com">contact@plateforme-orientations.com</a></p>
-                    <p>Téléphone : +229 00 00 00 00</p>
+                <div class="text-center mt-4">
+                    <p>&copy; 2024 Mon Application. Tous droits réservés.</p>
                 </div>
             </div>
         </footer>
-
-
-
-
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+
     <script>
-        document.querySelectorAll('#nav-select').forEach(select => {
+        // Redirection sur changement de sélection
+        document.querySelectorAll('select').forEach(function(select) {
             select.addEventListener('change', function() {
-                var selectedValue = this.value;
-                if (selectedValue) {
-                    window.location.href = selectedValue;
-                }
+                window.location.href = this.value;
             });
         });
     </script>
 
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>
