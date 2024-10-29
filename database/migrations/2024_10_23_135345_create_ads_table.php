@@ -13,21 +13,19 @@ return new class extends Migration
     {
         Schema::create('ads', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('image');
-            $table->string('link')->nullable();
-            $table->enum('position', ['header', 'sidebar', 'footer'])->default('sidebar');
-            $table->boolean('active')->default(true);
-            $table->timestamps();
+            $table->string('title'); // Titre de l'annonce
+            $table->string('image'); // URL ou chemin de l'image
+            $table->string('link')->nullable(); // Lien de redirection, nullable
+            $table->boolean('active')->default(true); // Statut de l'annonce (active ou désactivée)
+            $table->timestamps(); // Création des champs created_at et updated_at
         });
     }
-
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('ads');
+        Schema::dropIfExists('ads'); // Suppression de la table ads
     }
 };

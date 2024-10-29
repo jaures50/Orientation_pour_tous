@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Http\Controllers;
 
 use App\Models\Ad;
@@ -23,13 +22,16 @@ class AdController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif',
             'link' => 'nullable|url',
-            'position' => 'required|in:header,sidebar,footer',
+            'active' => 'boolean', // Validation pour le champ active
         ]);
 
         $path = $request->file('image')->store('ads', 'public');
         $validated['image'] = $path;
+
+        // Assigner 'active' à true si coché, sinon false
+        $validated['active'] = $request->has('active');
 
         Ad::create($validated);
 
@@ -45,15 +47,18 @@ class AdController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
             'link' => 'nullable|url',
-            'position' => 'required|in:header,sidebar,footer',
+            'active' => 'boolean', // Validation pour le champ active
         ]);
 
         if ($request->hasFile('image')) {
             $path = $request->file('image')->store('ads', 'public');
             $validated['image'] = $path;
         }
+
+        // Assigner 'active' à true si coché, sinon false
+        $validated['active'] = $request->has('active');
 
         $ad->update($validated);
 

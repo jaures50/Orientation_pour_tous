@@ -47,6 +47,7 @@ class MainController extends Controller
         $ads = Ad::all();
         return view('home', compact('ads'));
     }
+    
 
     // Afficher la page de profil
     public function profile()

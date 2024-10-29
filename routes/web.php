@@ -74,6 +74,8 @@ Route::get('/offres/benin-destination-sup', [OffreController::class, 'benindesti
 
 
 
+
+
 /* formation */
 Route::get('/formatheque/vente-de-formations', [FormationController::class, 'formation'])->name('formatheque.formation');
 Route::get('/formatheque/ebooks', [FormationController::class, 'ebooks'])->name('formatheque.ebooks');
@@ -111,3 +113,4 @@ Route::get('/tout', [EtablissementController::class, 'tous'])->name('etablisseme
 use App\Http\Controllers\AdController;
 
 Route::resource('ads', AdController::class);
+

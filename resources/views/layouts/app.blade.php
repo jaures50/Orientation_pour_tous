@@ -111,7 +111,7 @@
         <div class="">
             <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
                 <div class="container">
-                    <a class="navbar-brand" href="/">
+                    <a class="navbar-brand" href="{{ route('home') }}">
                         <img src="{{ asset('images/logo.png') }}" height="100px" alt="Description de l'image">
 
                     </a>
@@ -196,18 +196,18 @@
             </nav>
         </div>
 
-
-        <!-- Carrousel -->
-        <div id="carouselExampleAutoplaying" class="carousel slide " data-bs-ride="carousel">
-            <div class="carousel-inner">
+        @if (Request::is('home'))
+        <!-- Carrousel dans le header -->
+        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner" style="height: 400px; background-color: #f1f1f1;">
                 @foreach ($ads as $index => $ad)
+                @if ($ad->active) <!-- Vérification si l'annonce est active -->
                 <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
                     <a href="{{ $ad->link }}" target="_blank">
-
-                        <div class="ad-1" style="background-image: url('{{ asset('storage/' . $ad->image) }}'); height: 300px; background-repeat: no-repeat;  background-size: cover; background-position: center; position: relative; "></div>
+                        <div class="ad-1" style="background-image: url('{{ asset('storage/' . $ad->image) }}'); height: 300px; background-repeat: no-repeat; background-size: cover; background-position: center; position: relative;"></div>
                     </a>
-
                 </div>
+                @endif
                 @endforeach
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
@@ -219,6 +219,8 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
+        @endif
+
 
 
         <!-- Contenu principal -->
@@ -230,6 +232,9 @@
 
 
         <footer>
+
+
+
             <div class="container">
                 <div class="row">
                     <div class="col-md-3">

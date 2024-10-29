@@ -1,7 +1,16 @@
 @extends('layouts.app')
 
 @section('title', 'Connexion')
-
+<style>
+    .monsty {
+        border-color: red !important;
+        border: 3px solid !important;
+        border-top: 0px !important;
+        border-left: 0px !important;
+        border-right: 0px !important;
+        border-bottom-color: black !important;
+    }
+</style>
 @section('content')
 
 <div class="container d-flex justify-content-center align-items-center" style="height: 70vh;">
@@ -14,7 +23,7 @@
                     @csrf
                     <div class="mb-3">
                         <label for="email" class="form-label">Adresse e-mail</label>
-                        <input id="email" type="email" class="form-control" name="email" required autofocus>
+                        <input id="email" type="email" class="form-control monsty" name="email" required autofocus>
                     </div>
 
                     <div class="mb-3">
