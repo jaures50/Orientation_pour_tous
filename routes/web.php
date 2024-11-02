@@ -114,3 +114,8 @@ use App\Http\Controllers\AdController;
 
 Route::resource('ads', AdController::class);
 
+
+/* Routes pour admin */
+
+Route::get('/tableau', [MainController::class, 'tableau'])->name('tableau');
+

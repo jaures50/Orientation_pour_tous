@@ -33,9 +33,15 @@
     .bordure p a:hover {
         color: blue;
     }
+
+    .taille {
+        font-weight: bold !important;
+        color: black;
+        font-size: 20px;
+    }
 </style>
 @section('content')
-<div class="container mt-5">
+<div class="container py-5 ">
     <div>
         <h1 class="text-center mb-5">Contactez nos conseillers</h1>
 
@@ -49,7 +55,7 @@
     </div>
     <div class="row py-5">
         <div class="col-md-4">
-        <div class="text-center bordure" id="shadowBox1">
+            <div class="text-center bordure" id="shadowBox1">
                 <h3>Address</h3>
                 <p> Dekoungbe</p>
             </div>
@@ -77,32 +83,33 @@
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15860.161705463153!2d2.349645882224804!3d6.388785088637709!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x102357002654b0d9%3A0xdff789dfb0793792!2sDekoungbe!5e0!3m2!1sfr!2sbj!4v1730211023207!5m2!1sfr!2sbj" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </p>
         </div>
-        <div class="col-md-6 py-3">
+        <div class="col-md-6 py-1">
 
-
-
-            <form method="POST" action="{{ route('offres.conseillers.submit') }}">
-                @csrf
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label for="name" class="form-label">Nom complet</label>
-                        <input id="name" type="text" class="form-control" name="name" required>
+            <div class="shadow" style="padding: 16px;">
+                <form method="POST" action="{{ route('offres.conseillers.submit') }}">
+                    @csrf
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="name" class=" taille ">Nom complet</label>
+                            <input id="name" type="text" class="form-control" name="name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="email" class=" taille ">Adresse e-mail</label>
+                            <input id="email" type="email" class="form-control" name="email" required>
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <label for="email" class="form-label">Adresse e-mail</label>
-                        <input id="email" type="email" class="form-control" name="email" required>
+
+                    <div class="mb-3">
+                        <label for="message" class=" taille ">Message</label>
+                        <textarea id="message" class="form-control" name="message" rows="8" required></textarea>
                     </div>
-                </div>
 
-                <div class="mb-3">
-                    <label for="message" class="form-label">Message</label>
-                    <textarea id="message" class="form-control" name="message" rows="8" required></textarea>
-                </div>
+                    <div class=" mt-4 py-4">
+                        <button type="submit" class="btn btn-primary">Envoyer le message</button>
+                    </div>
+                </form>
 
-                <div class=" mt-4 py-4">
-                    <button type="submit" class="btn btn-primary">Envoyer le message</button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>

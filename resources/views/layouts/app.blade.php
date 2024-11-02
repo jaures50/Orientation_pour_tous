@@ -9,8 +9,11 @@
     <!-- Police Google -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
 
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ asset('images/logo.png') }}">
+
 
     <style>
         /* Styles généraux */
@@ -75,7 +78,7 @@
         } */
 
         .nav-item a {
-            color: black;
+            color: black !important;
             font-weight: bold;
         }
 
@@ -105,7 +108,7 @@
     <div>
         <!-- Navigation -->
         <div class="">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+            <nav class="navbar navbar-expand-lg navbar-light  shadow-sm">
                 <div class="container">
                     <a class="navbar-brand" href="{{ route('home') }}">
                         <img src="{{ asset('images/logo.png') }}" height="100px" alt="Description de l'image">
@@ -150,7 +153,8 @@
                                 <a class="nav-link" href="{{ route('contact') }}">Contact</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('dashboard') }}">Bord</a>
+                                <a class="nav-link" href="{{ route('tableau') }}">Bord''</a>
+
                             </li>
                         </ul>
 

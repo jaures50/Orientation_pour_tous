@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Ad;
 
 use Illuminate\Http\Request;
@@ -47,7 +48,7 @@ class MainController extends Controller
         $ads = Ad::all();
         return view('home', compact('ads'));
     }
-    
+
 
     // Afficher la page de profil
     public function profile()
@@ -81,5 +82,11 @@ class MainController extends Controller
     public function resetPassword($token)
     {
         return view('auth.passwords.reset', ['token' => $token]);
+    }
+
+    /* Admin */
+    public function tableau()
+    {
+        return view('administrateur.tableau');
     }
 }
