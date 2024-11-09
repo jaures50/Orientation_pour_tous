@@ -15,7 +15,7 @@ class MainController extends Controller
     public function index()
     {
         $ads = Ad::all();
-        return view('welcome', compact('ads'));
+        return view('home', compact('ads'));
     }
 
     // Afficher la vue de connexion

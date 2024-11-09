@@ -113,6 +113,7 @@ Route::get('/tout', [EtablissementController::class, 'tous'])->name('etablisseme
 use App\Http\Controllers\AdController;
 
 Route::resource('ads', AdController::class);
+Route::get('/creer_une_pub', [AdController::class, 'admin'])->name('administrateur.create'); // Route pour afficher tous les établissements
 
 
 /* Routes pour admin */

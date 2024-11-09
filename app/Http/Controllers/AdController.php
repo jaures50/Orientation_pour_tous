@@ -17,6 +17,10 @@ class AdController extends Controller
     {
         return view('ads.create');
     }
+    public function admin()
+    {
+        return view('administrateur.create');
+    }
 
     public function store(Request $request)
     {
